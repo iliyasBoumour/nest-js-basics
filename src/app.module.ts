@@ -5,6 +5,5 @@ import { Module } from '@nestjs/common';
 @Module({
   imports: [catsModule],
   controllers: [TestsController],
-  // providers: [TesS],
 })
 export class AppModule {}
