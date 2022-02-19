@@ -1,5 +1,5 @@
-import { Public } from '../utils/access.decorator';
-import { NumericParam } from '../utils/numericParam';
+import { Public } from '../shared/access.decorator';
+import { NumericParam } from '../shared/numericParam';
 import { Post as PostModel } from './entities/post.entity';
 import {
   Controller,
@@ -9,7 +9,6 @@ import {
   Patch,
   Param,
   Delete,
-  ParseIntPipe,
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';

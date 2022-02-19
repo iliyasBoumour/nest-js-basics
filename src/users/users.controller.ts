@@ -1,4 +1,5 @@
-import { NumericParam } from '../utils/numericParam';
+import { RoleEnum } from './entities/role.entity';
+import { NumericParam } from '../shared/numericParam';
 import {
   Controller,
   Get,
@@ -12,6 +13,7 @@ import {
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Roles } from '../shared/roles.decorator';
 
 @Controller('users')
 export class UsersController {
@@ -22,6 +24,7 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  @Roles(RoleEnum.ROLE_ADMIN)
   @Get()
   findAll() {
     return this.usersService.findAll();
