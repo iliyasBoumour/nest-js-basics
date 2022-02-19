@@ -1,4 +1,4 @@
-import { NumericParam } from './../utils/NumericParam';
+import { NumericParam } from '../utils/numericParam';
 import {
   Controller,
   Get,
@@ -7,6 +7,7 @@ import {
   Patch,
   Param,
   Delete,
+  Request,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -25,7 +26,10 @@ export class UsersController {
   findAll() {
     return this.usersService.findAll();
   }
-
+  @Get('profile')
+  findLoggedIn(@Request() req) {
+    return req.user;
+  }
   @Get(':id')
   findOne(@Param() id: NumericParam) {
     return this.usersService.findOne(id.id);

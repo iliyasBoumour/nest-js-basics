@@ -1,4 +1,5 @@
-import { NumericParam } from './../utils/NumericParam';
+import { Public } from '../utils/access.decorator';
+import { NumericParam } from '../utils/numericParam';
 import { Post as PostModel } from './entities/post.entity';
 import {
   Controller,
@@ -25,11 +26,13 @@ export class PostsController {
     return this.postsService.create(createPostDto);
   }
 
+  @Public()
   @Get()
   findAll(): Promise<PostModel[]> {
     return this.postsService.findAll();
   }
 
+  @Public()
   @Get(':id')
   findOne(@Param() id: NumericParam): Promise<PostModel> {
     return this.postsService.findOne(id.id);
