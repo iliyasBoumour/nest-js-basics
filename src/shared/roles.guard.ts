@@ -11,13 +11,11 @@ export class RolesGard implements CanActivate {
     const requiredRoles: RoleEnum[] = this.reflector.getAllAndOverride<
       RoleEnum[]
     >(ROLES_KEY, [context.getHandler(), context.getClass()]);
-    console.log(requiredRoles);
 
     if (!requiredRoles) {
       return true;
     }
     const user: User = context.switchToHttp().getRequest()?.user;
-    // if (requiredRoles.some(role=>user.roles?.includes(role))) return false;
     return user.roles.some((role) => requiredRoles.includes(role.RoleName));
   }
 }
